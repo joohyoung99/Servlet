@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사칙연산</title>
+<title>길이 변환</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -15,33 +15,25 @@
 <body>
 
 
-	<%
-		int number1 = Integer.parseInt(request.getParameter("number1"));
-		int number2 = Integer.parseInt(request.getParameter("number2"));
-		String operator = request.getParameter("operator");
-		
-		double result = 0;
-		
-		if(operator.equals("+")){
-			result = number1 + number2;
-		} else if(operator.equals("-")){
-			result = number1 - number2;
-		} else if(operator.equals("X")){
-			result = number1 * number2;
-		}else if(operator.equals("/")){
-			result = number1 / (double)number2;
-		}
-		
-		
-	
-	
-	%>
-	
-	<h1>계산 결과</h1>
-	
-	<div class= "display-4">
-	<%= number1 %> <%= operator %> <%=number2 %> = <span class="text-primary"><%=result %></span>
-	</div>
+<div class="container">
+
+<h1>길이 변환</h1>
+
+<form method="post" action="/jsp/test05_1.jsp">
+<div class="d-flex">
+<input type="text" class="form-control col-4" name="length"> 
+<div>cm</div>
+</div>
+<label >인치<input type="checkbox" name="unit" value="in"></label>
+<label >야드<input type="checkbox" name="unit" value="ya"></label>
+<label >피트<input type="checkbox" name="unit" value="ft"></label>
+<label >미터<input type="checkbox" name="unit" value="m"></label><br>
+
+<button type="submit" class="btn btn-success">변환</button>
+</form>
+
+
+</div>
 
 </body>
 </html>
