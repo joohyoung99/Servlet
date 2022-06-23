@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td>과일</td>
-			<td><%= request.getParameter("fruits")%></td>
+			<td><%= request.getParameter("fruits") %></td>
 		</tr>
 	</table>
 
