@@ -4,60 +4,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>길이 변환</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+<title>Insert title here</title>
 </head>
-
-
 <body>
 
-
 	<%
-	 int length = Integer.parseInt(request.getParameter("length"));
+		// cm 단위의 길이 
+		// 변환할 단위 (체크박스 기반의 여러개)
 		
-
-	String[] units = request.getParameterValues("unit");
-	
-	String lengthString = "";
-	double result = 0;
-	
-	for(String unit : units){
-		if(unit.equals("in")){
-			result = length / 2.54 ;
-			continue;
-		}				
-		if(unit.equals("ya")){
-			result = length / 91.44;
-		continue;
+		int length = Integer.parseInt(request.getParameter("length"));
+		// 변환할 단위 여러개 
+		String[] units = request.getParameterValues("units");
+		// inch, yard, feet, meter
+	// {inch, yard};
+		String result = "";
+		for(int i = 0; i < units.length; i++) {
+			String unit = units[i];
+			if(unit.equals("inch")) {
+				double inch = length * 0.39;
+				// 3.124 in
+				// result = result + inch + "in";
+				result += inch + " in<br>";
+			} else if(unit.equals("yard")) {
+				double yard = length * 0.010936133;
+				result += yard + " yd<br>";
+			} else if(unit.equals("feet")) {
+				double feet = length * 0.032808399;
+				result += feet + " ft<br>";
+			} else {
+				double meter = length / 100.0;
+				result += meter + "m<br>";
+			}
 		}
-		if(unit.equals("ft")){
-			result = length / 30.48;
-			
-		}
-		if(unit.equals("m")){
-			result = length /100 ; 
-		}
-		
-		lengthString = result + unit + "\n";
-	}
-	
-	
-
-	
 	%>
 	
-	<h1>변환 결과</h1>
-	<h3> <%=length %>cm</h3>
-	<hr>
-	<h3>
-	<%= lengthString %> 
+	<h2>변환 결과</h2>
 	
-	</h3>
+	<h3><%=length %>cm</h3>
+	
+	<hr>
+	
+	<h3><%= result %></h3>
+	
+	
 
 </body>
 </html>
