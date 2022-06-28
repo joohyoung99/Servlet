@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Calendar" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>오늘부터 1일</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -14,36 +12,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
 
+
 </head>
 <body>
 
-
-<div ckass="container">
-	<h1>오늘부터 1일</h1>
 	
+	<div class="container">
+		<jsp:include page="header.jsp" />
+		<jsp:include page="nav.jsp" />
+		<section class="display-1">
+			새로운 컨텐츠 !!!<br>
+			와우!!!
+			
+		</section>
+		<jsp:include page="footer.jsp"/>
 	
-	<%
-	Calendar today = Calendar.getInstance();
-	
-	
-	today.add(Calendar.DATE, -1);
-	
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 M월 d일");
-	
-	
-	String dateString = formatter.format(today.getTime());
-
-	%>
-	
-	
-	<% for(int i= 0; i< 10; i++){
-		today.add(Calendar.DATE, 100 );
-		dateString = formatter.format(today.getTime());
-		%>
-	<div class="display-4"><%= (i+1) * 100 %> 일: <span class="display-4 text-danger"> <%= dateString %></span></div>
-	<%} %>
-</div>
-	
+	</div>
 
 </body>
 </html>
