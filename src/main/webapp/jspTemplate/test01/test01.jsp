@@ -79,7 +79,6 @@
 						//카테고리가 전달되지 않으면(search==null), 전체를 보여주기
 						if(search == null ||category.equals(search)){
 							
-							
 					%>
 					 
 					<tr>

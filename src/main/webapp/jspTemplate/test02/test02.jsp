@@ -13,42 +13,55 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
-
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 
-	<div class="container">
-		<header>
-			<div class="d-flex">
-				<div class="text-secondary">Melong</div>
-				<div class="input-group">
-				<input type="text" class="form-control col-4">
-				<div class="input-group-btn">
-				<button type="submit" class="btn btn-info">검색</button>
-				</div>
-				</div>
-			</div>
+
+	<%@ include file="data.jsp" %>
+	<div id="wrap">
+		<jsp:include page="header.jsp" />
 		
-		</header>
-		<nav >
-			<ul class="nav">
-				<li class="nav-item"><a href="#" class="nav-link">멜론차트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">최신음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">장르음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">멜롱DJ</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">뮤직어워드</a></li>
-				
-			</ul>
-		</nav>
-		<section>
-			<article></article>
-			<article></article>
+		<jsp:include page="nav.jsp" />
+		<section >
+			<div class="artist d-flex border border-success p-3 mt-2">
+				<div class="image">
+					<img width="150" src="<%= artistInfo.get("photo") %>">
+				</div>
+				<div class="info ml-3">
+					<h3><%= artistInfo.get("name") %></h3>
+					<div><%= artistInfo.get("agency") %></div>
+					<div><%= artistInfo.get("debute") %> 데뷔</div>
+				</div>
+			 </div>
+			 
+			 <div class="music-list mt-3">
+			 	<h3 >곡 목록</h3>
+			 	<table class="table table-sm text-center">
+			 		<thead>
+			 			<tr>
+			 				<th>no</th>
+			 				<th>제목</th>
+			 				<th>앨범</th>
+			 			</tr>
+			 		</thead>
+			 		<tbody>
+			 		
+			 		<% for(Map<String, Object> music : musicList) { %>
+			 			<tr>
+			 				<td><%=music.get("id") %></td>
+			 				<td><a href="/jspTemplate/test02/test02_1.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
+			 				<td><%= music.get("album") %></td>
+			 			</tr>
+			 		<%} %>
+			 			
+			 		</tbody>
+			 				
+			 	</table>
+			 
+			 </div>
 		</section>
-		<footer>
-			<div class="small text-secondary">
-				Copyright 2021. melong ALL Rights Reserved.
-			</div>
-		</footer>
+		<jsp:include page="footer.jsp" />
 	
 	
 	</div>
