@@ -47,7 +47,6 @@ public class MySqlService {
    public int update(String query)  {
       try {
          
-      
       int count = this.statement.executeUpdate(query);
       return count;
       } catch(SQLException e) {
@@ -61,14 +60,16 @@ public class MySqlService {
    
    // select  쿼리 수행 기능
    public ResultSet select(String query)  {
-      ResultSet resultSet=null;
+      ResultSet resultSet;
       try {
          resultSet = this.statement.executeQuery(query);
+         return resultSet;
       } catch (SQLException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
+         return null;
       }
-      return resultSet;
+      
    }
    
 }

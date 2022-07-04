@@ -25,7 +25,7 @@
 MySqlService mysqlService = MySqlService.getInstance();
 mysqlService.connect();
 
-String query = "SELECT `name` ,`url` FROM `url_table` order by `id` desc;";
+String query = "SELECT `name` ,`url` FROM `url_table` order by `id` desc ;";
 
 ResultSet resultSet = mysqlService.select(query);
 
@@ -46,13 +46,16 @@ ResultSet resultSet = mysqlService.select(query);
 				<tr>
 					<td><%= resultSet.getString("name") %></td>
 					<td><a href="<%= resultSet.getString("url") %>"><%= resultSet.getString("url") %></a></td>
-					<td><a href="#">삭제</a></td>
+					<td><a href="/db/test02/delete?id=<%= resultSet.getInt("id")%>">삭제</a></td>
 				</tr>
 				
-				<%} %>
+				<% } %>
 			</tbody>
 		
 		</table>
+		
+		
+		<a href="/db/test02_2.jsp" class="btn">추가하기</a>
 	</div>
 
 

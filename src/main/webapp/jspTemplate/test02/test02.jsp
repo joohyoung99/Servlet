@@ -20,7 +20,7 @@
 	<%@ include file="data.jsp" %>
 	<div id="wrap">
 		<jsp:include page="header.jsp" />
-		<jsp:include page="menu.jsp" />
+		<jsp:include page="nav.jsp" />
 		<section class="contents">
 			<div class="artist d-flex border border-success p-3 mt-2">
 				<div class="image">
